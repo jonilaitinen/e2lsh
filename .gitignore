@@ -1,0 +1,7 @@
+bin/compareOutputs
+bin/exactNNs
+bin/genDS
+bin/genPlantedDS
+bin/LSHMain
+bin/testFloat
+

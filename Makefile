@@ -29,7 +29,7 @@ LIBRARIES:=-lm
 #-ldmalloc
 
 all: 
-	bin/compile
+	bin/compile.sh
 
 c: compile
 
@@ -56,7 +56,7 @@ ship:
 	cp mnist1k.dts05 E2LSH-0.1/mnist1k.dts
 	cp mnist10k_q05 E2LSH-0.1/mnist1k.q
 	mkdir E2LSH-0.1/bin
-	cp bin/compile bin/exact bin/lsh* E2LSH-0.1/bin 
+	cp bin/compile.sh bin/exact.sh bin/lsh* E2LSH-0.1/bin 
 	\rm -f E2LSH-0.1.tar E2LSH-0.1.tar.gz
 	tar -cvf E2LSH-0.1.tar E2LSH-0.1/
 	gzip -c E2LSH-0.1.tar > E2LSH-0.1.tar.gz
