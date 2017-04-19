@@ -1,3 +1,8 @@
+.dirstamp
+.deps/
+*.o
+*.l[oa]
+
 bin/compareOutputs
 bin/exactNNs
 bin/genDS
