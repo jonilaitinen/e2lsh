@@ -8,9 +8,24 @@ lib_LTLIBRARIES = libe2lshGen.la
 # Build information for each library
 
 # Sources for libe2lshGen
-libe2lshGen_la_SOURCES = ../sources/BucketHashing.cpp
+libe2lshGen_la_SOURCES = \
+	../sources/BucketHashing.cpp \
+	../sources/compareOutputs.cpp \
+	../sources/convertMNIST.cpp \
+	../sources/exactNNS.cpp \
+	../sources/genDS.cpp \
+	../sources/genPlantedDS.cpp \
+	../sources/Geometry.cpp \
+	../sources/GlobalVars.cpp \
+	../sources/LocalitySensitiveHashing.cpp \
+	../sources/NearNeighbors.cpp \
+	../sources/Random.cpp \
+	../sources/SelfTuning.cpp \
+	../sources/testFloat.cp \
+	../sources/Util.cpp \
+	../sources/LSH.cpp
 
-include_HEADERS = ../sources/headers.h
+include_HEADERS = ../sources/LSH.h
 
 # Linker options libTestProgram
 libe2lshGen_la_LDFLAGS = 
