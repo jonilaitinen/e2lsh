@@ -1,16 +1,21 @@
 #ifndef LSH_INCLUDED
 #define LSH_INCLUDED
 
+#include <stdio.h>
+#include "BasicDefinitions.h"
+#include "Geometry.h"
+
 class LSH {
 public:
     LSH();
     virtual ~LSH() {};
     
-    void computeParameters(int numPoints, int nQueries, int pointsDimension,
+    void computeParameters(IntT numPoints, int pointsDimension,
     	RealT successProbability, RealT thresholdR, PPointT *dataSetPoints,
-    	PPointT* sampleQueries, Int32T nSampleQueries,
-    	MemVarT availableTotalMemory, const char* flags);
-    
+    	MemVarT availableTotalMemory);
+
+private:
+    void transformMemRatios(IntT nRadii, RealT* memRatiosForNNStructs);
     
 };
 
