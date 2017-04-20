@@ -7,11 +7,12 @@ LSH::LSH() {
 
 }
 
-void LSH::computeParametersForData(const std::vector<std::vector<double> >& data) {
+std::vector<RNNParametersT> LSH::computeParametersForData(
+		const std::vector<std::vector<double> >& data) {
 
 	if(data.empty()) {
 		printf("Empty data vector!");
-		return;
+		return std::vector<RNNParametersT>();
 	}
 
 	IntT nPoints = data.size();
@@ -38,14 +39,17 @@ void LSH::computeParametersForData(const std::vector<std::vector<double> >& data
 		dataSet[i] = p;
 	}
 
-	computeParameters(nPoints, pointsDimension, successProbability, thresholdR, dataSet, availableTotalMemory);
+	return computeParameters(nPoints, pointsDimension, successProbability,
+			thresholdR, dataSet, availableTotalMemory);
 
 }
 
-void LSH::computeParameters(IntT nPoints, IntT pointsDimension,
+std::vector<RNNParametersT> LSH::computeParameters(IntT nPoints, IntT pointsDimension,
 		RealT successProbability, RealT thresholdR, PPointT *dataSetPoints,
 		MemVarT availableTotalMemory) {
 	printf("Start compute parameters...\n");
+
+	std::vector<RNNParametersT> results;
 
 	IntT nRadii = 1;
 	RealT *listOfRadii = NULL;
@@ -61,7 +65,7 @@ void LSH::computeParameters(IntT nPoints, IntT pointsDimension,
 		fprintf(ERROR_OUTPUT,
 				"Error: the structure supports at most %d points (%d were specified).\n",
 				MAX_N_POINTS, nPoints);
-		return;
+		return results;
 	}
 
 	// generate sample queries
@@ -108,8 +112,10 @@ void LSH::computeParameters(IntT nPoints, IntT pointsDimension,
 				segregatedQNumber, sampleQueries + segregatedQStart,
 				(MemVarT) ((availableTotalMemory - totalAllocatedMemory)
 						* memRatiosForNNStructs[i]));
+		results.push_back(optParameters);
 		printRNNParameters(stdout, optParameters);
 	}
+	return results;
 
 }
 

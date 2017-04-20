@@ -24,7 +24,8 @@ libe2lshGen_la_SOURCES = \
 include_HEADERS = \
 	../sources/LSH.h \
 	../sources/BasicDefinitions.h \
-	../sources/Geometry.h
+	../sources/Geometry.h \
+	../sources/RNNParametersT.h
 
 # Linker options libTestProgram
 libe2lshGen_la_LDFLAGS = 
