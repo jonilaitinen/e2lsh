@@ -8,7 +8,8 @@ LSH::LSH() {
 }
 
 std::vector<RNNParametersT> LSH::computeParametersForData(
-		const std::vector<std::vector<double> >& data) {
+		const std::vector<std::vector<double> >& data, RealT thresholdR,
+		RealT successProbability, MemVarT availableTotalMemory) {
 
 	if(data.empty()) {
 		printf("Empty data vector!");
@@ -17,9 +18,6 @@ std::vector<RNNParametersT> LSH::computeParametersForData(
 
 	IntT nPoints = data.size();
 	IntT pointsDimension = data[0].size();
-	RealT successProbability = 0.9;
-	RealT thresholdR = 0.3; // 0.005 0.01 0.05 0.1 0.15 0.2 0.25 0.3 0.31 0.32 0.33 0.34 0.35 0.36 0.38 0.4
-	MemVarT availableTotalMemory = 4000000; // ~4GB
 
 	PPointT* dataSet = NULL;
 	FAILIF(NULL == (dataSet = (PPointT*)MALLOC(nPoints * sizeof(PPointT))));

@@ -14,7 +14,9 @@ public:
     virtual ~LSH() {};
     
     std::vector<RNNParametersT> computeParametersForData(
-    		const std::vector<std::vector<double> >& data);
+    		const std::vector<std::vector<double> >& data,
+			RealT thresholdR, RealT successProbability = 0.9,
+			MemVarT availableTotalMemoryKB = 4000000); // 4GB
 
 private:
     std::vector<RNNParametersT> computeParameters(IntT numPoints,
