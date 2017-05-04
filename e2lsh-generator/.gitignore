@@ -49,6 +49,8 @@ local.properties
 .scala_dependencies
 .worksheet
 
+.autotools
+
 # Autotools gitignore
 # http://www.gnu.org/software/automake
 
